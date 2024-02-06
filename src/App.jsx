@@ -6,8 +6,9 @@ import ProductDetail from './components/ProductDetail';
 import SearchItem from './components/SearchItem';
 import Cart from './components/Cart';
 import { items } from './components/Data';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Login from './account/Login';
+import Signup from './account/Signup';
+
 
 
 
@@ -16,15 +17,18 @@ const App = () => {
   const [cart, setCart] = useState([])
   return (
     <>
+    
     <Router>
     <Navbar cart={cart} setData={setData} />
     <Routes>
+    <Route path="/Login" element={<Login />} />
+      <Route path="/Signup" element={<Signup />} />
+
       <Route path="/" element={<Product cart={cart} setCart={setCart} items={data} />} />
       <Route path="/product/:id" element={<ProductDetail cart={cart} setCart={setCart} />} />
       <Route path="/search/:term" element={<SearchItem cart={cart} setCart={setCart} />} />
       <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
-      <Route path="/Login" element={<Login />} />
-      <Route path="/Signup" element={<Signup />} />
+     
     </Routes>
 
     </Router>
